@@ -27,45 +27,11 @@ const inspectTypebot = async () => {
       [type]: val,
     },
     select: {
-      id: true,
-      name: true,
-      riskLevel: true,
-      publicId: true,
-      customDomain: true,
-      createdAt: true,
-      isArchived: true,
-      isClosed: true,
       publishedTypebot: {
         select: {
           id: true,
-        },
-      },
-      collaborators: {
-        select: {
-          user: {
-            select: {
-              email: true,
-            },
-          },
-        },
-      },
-      workspace: {
-        select: {
-          id: true,
-          name: true,
-          plan: true,
-          isPastDue: true,
-          isSuspended: true,
-          members: {
-            select: {
-              role: true,
-              user: {
-                select: {
-                  email: true,
-                },
-              },
-            },
-          },
+          createdAt: true,
+          updatedAt: true,
         },
       },
     },
@@ -75,8 +41,6 @@ const inspectTypebot = async () => {
     console.log("Typebot not found");
     return;
   }
-
-  console.log(`https://app.typebot.io/typebots/${typebot.id}/edit`);
 
   console.log(JSON.stringify(typebot, null, 2));
 };
